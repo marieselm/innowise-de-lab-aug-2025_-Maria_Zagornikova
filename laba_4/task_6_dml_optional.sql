@@ -24,12 +24,10 @@ where EndDate is null;
 
 -- 4. Вставка нового сотрудника и назначение его на проект 'Website Redesign' с 80 часами
 -- Используется транзакция и RETURNING для получения нового EmployeeID
-begin;
-insert into Employees (FirstName, LastName, Department, Salary)
-values ('Greg', 'Miller', 'Design', 50000.00)
-returning EmployeeID into new_emp_id;
-
+with new_emp as (
+  insert into Employees (FirstName, LastName, Department, Salary)
+  values ('Greg', 'Miller', 'Design', 50000.00)
+  returning EmployeeID
+)
 insert into EmployeeProjects (EmployeeID, ProjectID, HoursWorked)
-values (new_emp_id, 1, 80);
-commit;
-
+select EmployeeID, 1, 80 from new_emp;

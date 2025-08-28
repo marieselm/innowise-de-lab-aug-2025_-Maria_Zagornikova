@@ -4,13 +4,12 @@
 -- Назначение: рассчитывает годовой бонус сотрудника как 10% от его зарплаты.
 -- Принимает: emp_id (не используется в теле функции, но может быть полезен для расширения логики)
 -- Возвращает: бонус в формате DECIMAL
-create or replace function CalculateAnnualBonus(emp_id INT, salary DECIMAL)
+create or replace function CalculateAnnualBonus(salary DECIMAL)
 returns DECIMAL as $$
-begin 
-    return salary * 0.10;
+begin
+  return salary * 0.10;
 end;
 $$ language plpgsql;
-
 
 -- 2. Использование функции CalculateAnnualBonus
 -- Цель: показать потенциальный бонус для каждого сотрудника

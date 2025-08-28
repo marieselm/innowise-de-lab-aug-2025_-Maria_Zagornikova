@@ -15,6 +15,8 @@ select FirstName, LastName from  Employees where Department = 'IT';
 update Employees set Salary = 65000.00 where FirstName = 'Alice' and LastName = 'Smith';
 
 -- 5. Удаление сотрудника с фамилией Prince
+delete from EmployeeProjects
+where EmployeeID = (select EmployeeID from Employees where LastName = 'Prince');
 delete from Employees where LastName = 'Prince';
 
 -- 6. Проверка всех изменений

@@ -14,7 +14,8 @@ insert into Employees (FirstName, LastName, Department, Salary)
 values ('Test', 'User', 'HR', 50000.00);
 
 -- 5. Предоставление прав INSERT и UPDATE как пользователь-админ
-grant insert, update on employees to hr_user;
+grant insert, update on Employees to hr_user;
+grant usage, select on sequence employees_employeeid_seq to hr_user;
 
 -- 6. Финальный тест: INSERT и UPDATE от имени hr_user. Ожидаемый результат: оба запроса выполняются успешно
 
